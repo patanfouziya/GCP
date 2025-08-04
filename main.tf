@@ -2,8 +2,8 @@ provider "google" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = fileexists("GCP_CREDENTIALS.json") ? file("GCP_CREDENTIALS.json") : null
-  #credentials = file("GCP_CREDENTIALS") # for local; GitHub Actions will use env var
+  credentials = fileexists("gcp_secrete") ? file("gcp_secrete") : null
+  #credentials = file("gcp_secrete") # for local; GitHub Actions will use env var
 }
 
 resource "google_compute_instance" "default" {
