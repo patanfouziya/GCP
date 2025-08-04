@@ -21,7 +21,7 @@ jobs:
 
     - name: Set up Google Cloud credentials
       run: |
-        echo "$GOOGLE_CREDENTIALS" > GCP_CREDENTIALS
+        echo "$GOOGLE_CREDENTIALS" > GCP_CREDENTIALS.json
 
     - name: Terraform Init
       run: terraform init
