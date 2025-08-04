@@ -2,7 +2,7 @@ provider "google" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = fileexists("gcp_secrete") ? file("gcp_secrete") : null
+  credentials = fileexists("gcp_key.json") ? file("gcp.key.json") : null
   #credentials = file("gcp_secrete") # for local; GitHub Actions will use env var
 }
 
