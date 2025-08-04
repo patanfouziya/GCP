@@ -2,20 +2,21 @@ provider "google" {
   project     = var.project_id
   region      = var.region
   zone        = var.zone
-  credentials = file("GCP_CREDENTIALS") # for local; GitHub Actions will use env var
+  credentials = fileexists("GCP_CREDENTIALS.json") ? file("GCP_CREDENTIALS.json") : null
+  #credentials = file("GCP_CREDENTIALS") # for local; GitHub Actions will use env var
 }
 
-resource "google_compute_instance" "vm_instance" {
+resource "google_compute_instance" "default" {
   name         = var.instance_name
   machine_type = var.machine_type
   zone         = var.zone
 
   boot_disk {
-    initialize_params {
-      image = "${var.image_project}/${var.image_family}"
-      size  = var.boot_disk_size
-    }
+  initialize_params {
+    image = "projects/${var.image_project}/global/images/family/${var.image_family}"
+    size  = var.boot_disk_size
   }
+}
 
   network_interface {
     network = "default"
