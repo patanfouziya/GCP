@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+      GOOGLE_CREDENTIALS: ${{ secrets.gcp_secrete}}
 
     steps:
     - name: Checkout repository
@@ -21,7 +21,7 @@ jobs:
 
     - name: Set up Google Cloud credentials
       run: |
-        echo "$GOOGLE_CREDENTIALS" > GCP_CREDENTIALS.json
+        echo "$GOOGLE_CREDENTIALS" > gcp_secrete
 
     - name: Terraform Init
       run: terraform init
