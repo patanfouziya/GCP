@@ -20,7 +20,7 @@ variable "machine_type" {
 
 variable "instance_name" {
   type    = string
-  default = "vm-fou"
+  default = "hello-world"
 }
 
 variable "boot_disk_size" {
