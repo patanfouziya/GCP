@@ -8,11 +8,6 @@ variable "region" {
   default = "us-central1"
 }
 
-variable "zone" {
-  type    = string
-  default = "us-central-a"
-}
-
 variable "machine_type" {
   type    = string
   default = "n2-standard-8"
